@@ -1,0 +1,38 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:quizzler_app/pages/CategoryPage.dart';
+import 'package:quizzler_app/pages/HomePage.dart';
+import 'package:quizzler_app/pages/MoviePage.dart';
+import 'package:quizzler_app/widgets/CustomNavBar.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    //to hide status bar
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(scaffoldBackgroundColor: Color(0xFF0F111D)),
+      routes: {
+        "/": (context) => const HomePage(),
+        "categoryPage": (context) => CategoryPage(),
+        "moviePage": (context) => MoviePage(),
+      },
+    );
+  }
+}
